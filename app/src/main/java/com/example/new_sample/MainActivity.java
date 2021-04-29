@@ -408,9 +408,19 @@ public class MainActivity extends AppCompatActivity {
                     primeraVez = false;
                     aux = result;
                 } catch (Exception e) {
-                    t1.setText("Invalid Expression");
+                    try{
+                        if((Double) Double.parseDouble(expression) instanceof Double){
+                            t1.setText(expression);
+                        }else{
+                            t1.setText("Invalid Expression");
+                            expression = "";
+                        }
+
+                    }catch (NumberFormatException numberFormatException){
+                        numberFormatException.printStackTrace();
+
+                    }
                     t2.setText("");
-                    expression = "";
                     e.printStackTrace();
                 }
             }
